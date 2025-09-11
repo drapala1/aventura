@@ -1,18 +1,28 @@
 const avanca = document.querySelectorAll('btn.proximo');
-const reniciarBtn = document. getElementById('btn-reiniciar');
+const reniciarBtn = document.getElementById('btn-reiniciar');
 
-avanca.forEach(button =>{
-  button. addEventListener('click',function()  {
-const atual = document.querySelector('.ativo');
-const proximoPasso = 'passo-'+this.getattribute('data-proximo');
+avanca.forEach(button => {
+  button.addEventListener('click', function () {
+    const atual = document.querySelector('.ativo');
+    const proximoPasso = 'passo-' + this.getattribute('data-proximo');
 
-atual.classList.remove('ativo');
-const proximoElemento= document.getElementById(proximoPasso);
+    atual.classList.remove('ativo');
+    const proximoElemento = document.getElementById(proximoPasso);
 
-if(proximoElemento){
-    proximoElemento.classList.add('ativo');
-} else
-console.error(`Elemento com ID "${proximoPasso}"não encontrado`)
-}
+    if (proximoElemento) {
+      proximoElemento.classList.add('ativo');
+    } else {
+      console.error(`Elemento com ID "${proximoPasso}"não encontrado`)
+    }
   });
 });
+
+
+// renicia o jogo ao clicar no botão de renicio
+if (reiniciarBtn) {
+  reniciarBtn.addEventListener('click', () => {
+    const atual = document.querySelector('.ativo');
+    atual.classList.remove('ativo');
+    document.getElementById('passo-0').classList.add('ativo');
+  });
+}
